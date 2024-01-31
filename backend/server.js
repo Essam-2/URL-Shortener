@@ -2,12 +2,12 @@ const express = require("express");
 const { MongoClient, ServerApiVersion } = require("mongodb");
 const ShortUrl = require("./models/shortUrl");
 const validator = require("validator");
+require("dotenv").config();
 
 const app = express();
 const port = 5000;
 
-const uri =
-  "mongodb+srv://esamanwar2:url223311sh@url-shortener.kdo6nzj.mongodb.net/?retryWrites=true&w=majority";
+const uri = process.env.MONGODB_URI;
 
 const client = new MongoClient(uri, {
   serverApi: {
