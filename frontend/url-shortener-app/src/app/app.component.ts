@@ -4,6 +4,7 @@ import { RouterOutlet } from '@angular/router';
 import { StarsBackgroundComponent } from './stars-background/stars-background.component';
 import { InputUrlComponent } from './input-url/input-url.component';
 import { UrlsTableComponent } from './urls-table/urls-table.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,7 @@ import { UrlsTableComponent } from './urls-table/urls-table.component';
     StarsBackgroundComponent,
     InputUrlComponent,
     UrlsTableComponent,
+    HttpClientModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
