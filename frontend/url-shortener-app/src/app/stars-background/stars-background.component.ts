@@ -1,10 +1,13 @@
+import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-stars-background',
   standalone: true,
-  imports: [],
+  imports: [NgFor],
   templateUrl: './stars-background.component.html',
-  styleUrl: './stars-background.component.css',
+  styleUrl: './stars-background.component.scss',
 })
-export class StarsBackgroundComponent {}
+export class StarsBackgroundComponent {
+  stars: number[] = Array(20).fill(0);
+}
