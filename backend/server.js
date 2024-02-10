@@ -3,9 +3,12 @@ const { MongoClient, ServerApiVersion } = require("mongodb");
 const ShortUrl = require("./models/shortUrl");
 const validator = require("validator");
 require("dotenv").config();
+const cors = require("cors");
 
 const app = express();
 const port = 5000;
+
+app.use(cors({ origin: "http://localhost:4200" }));
 
 const uri = process.env.MONGODB_URI;
 
