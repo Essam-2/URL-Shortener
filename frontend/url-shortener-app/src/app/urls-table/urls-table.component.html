@@ -34,26 +34,24 @@
                 </tr>
               </thead>
               <tbody
-                class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900"
+                class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900/45"
               >
-                <tr>
+                <tr *ngFor="let url of shortUrls">
                   <td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
-                    <div>
-                      <h2 class="font-medium text-gray-800 dark:text-white">
-                        Catalog
-                      </h2>
-                    </div>
+                    <h2 class="font-medium text-gray-800 dark:text-white">
+                      {{ url.fullUrl }}
+                    </h2>
                   </td>
                   <td class="px-12 py-4 text-sm font-medium whitespace-nowrap">
                     <div
-                      class="inline px-3 py-1 text-sm font-normal rounded-full text-emerald-500 gap-x-2 bg-emerald-100/60 dark:bg-gray-800"
+                      class="inline cursor-pointer px-3 py-1 text-sm font-normal rounded-full text-emerald-500 gap-x-2 bg-emerald-100/60 dark:bg-gray-800"
                     >
-                      Customer
+                      {{ url.shortUrl }}
                     </div>
                   </td>
                   <td class="px-4 py-4 text-sm whitespace-nowrap">
                     <h4 class="text-gray-700 dark:text-gray-200">
-                      Content curating app
+                      {{ url.clicks }}
                     </h4>
                   </td>
                 </tr>
