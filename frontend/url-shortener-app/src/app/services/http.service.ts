@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -7,11 +8,17 @@ import { Injectable } from '@angular/core';
 export class HttpService {
   constructor(private http: HttpClient) {}
 
+  urlAdded: EventEmitter<void> = new EventEmitter<void>();
+
   shortUrl(url: string) {
     this.http
       .post('http://localhost:5000/shortUrl', { fullUrl: url })
       .subscribe((response) => {
-        console.log(response);
+        this.urlAdded.emit();
       });
+  }
+
+  getShortUrls(): Observable<any> {
+    return this.http.get('http://localhost:5000/');
   }
 }
