@@ -19,17 +19,24 @@ export class UrlsTableComponent implements OnInit {
     this.Http.urlAdded.subscribe(() => {
       this.getAllUrls();
     });
+    this.Http.getClicksUpdated().subscribe(() => {
+      this.getAllUrls();
+    });
   }
 
   getAllUrls() {
     this.Http.getShortUrls().subscribe(
       (response) => {
         this.shortUrls = response.shortUrls;
-        console.log(this.shortUrls);
+        // console.log(this.shortUrls);
       },
       (error: any) => {
         console.error('Error fetching short URLs:', error);
       }
     );
+  }
+
+  onShortUrlClick(): void {
+    this.Http.emitClicksUpdated();
   }
 }
