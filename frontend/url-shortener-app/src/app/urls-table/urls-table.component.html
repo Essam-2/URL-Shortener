@@ -43,11 +43,12 @@
                     </h2>
                   </td>
                   <td class="px-12 py-4 text-sm font-medium whitespace-nowrap">
-                    <div
+                    <a
+                      [href]="'http://localhost:5000/' + url.shortUrl"
                       class="inline cursor-pointer px-3 py-1 text-sm font-normal rounded-full text-emerald-500 gap-x-2 bg-emerald-100/60 dark:bg-gray-800"
                     >
                       {{ url.shortUrl }}
-                    </div>
+                    </a>
                   </td>
                   <td class="px-4 py-4 text-sm whitespace-nowrap">
                     <h4 class="text-gray-700 dark:text-gray-200">
