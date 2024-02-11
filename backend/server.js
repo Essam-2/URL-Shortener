@@ -78,6 +78,34 @@ app.post("/shortUrl", async (req, res) => {
   }
 });
 
+app.get("/:shortUrl", async (req, res) => {
+  const database = client.db("url-shortener");
+  const collection = database.collection("shorturls");
+
+  const shortUrl = req.params.shortUrl;
+  try {
+    const url = await collection.findOne({ shortUrl });
+    if (url) {
+      const updatedUrl = await collection.updateOne(
+        { shortUrl },
+        { $inc: { clicks: 1 } } // Increment clicks
+      );
+      if (updatedUrl.modifiedCount > 0) {
+        return res.redirect(url.fullUrl);
+      } else {
+        return res
+          .status(500)
+          .json({ message: "Failed to update clicks count" });
+      }
+    } else {
+      return res.status(404).json({ message: "Short URL not found" });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
