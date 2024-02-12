@@ -1,5 +1,6 @@
 const express = require("express");
 const { MongoClient, ServerApiVersion } = require("mongodb");
+const { ObjectId } = require("mongodb");
 const ShortUrl = require("./models/shortUrl");
 const validator = require("validator");
 require("dotenv").config();
@@ -72,6 +73,28 @@ app.post("/shortUrl", async (req, res) => {
     await collection.insertOne(newShortUrl.toObject()); // Save the new instance to MongoDB
 
     res.status(201).json({ message: "URL created successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+app.delete("/deleteShortUrl/:id", async (req, res) => {
+  const database = client.db("url-shortener");
+  const collection = database.collection("shorturls");
+
+  const id = req.params.id;
+
+  try {
+    const objectId = new ObjectId(id);
+    const result = await collection.deleteOne({ _id: objectId });
+    if (result.deletedCount === 1) {
+      return res
+        .status(200)
+        .json({ message: "Short URL deleted successfully" });
+    } else {
+      return res.status(404).json({ message: "Short URL not found" });
+    }
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal Server Error" });
