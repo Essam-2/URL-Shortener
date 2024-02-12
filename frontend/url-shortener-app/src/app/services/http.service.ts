@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +12,7 @@ export class HttpService {
   constructor(private http: HttpClient) {}
 
   urlAdded: EventEmitter<void> = new EventEmitter<void>();
+  urlDeleted: EventEmitter<void> = new EventEmitter<void>();
 
   shortUrl(url: string) {
     this.http
@@ -23,6 +24,14 @@ export class HttpService {
 
   getShortUrls(): Observable<any> {
     return this.http.get(`${this.apiUrl}/`);
+  }
+
+  deleteUrl(id: string): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/deleteShortUrl/${id}`).pipe(
+      tap(() => {
+        this.urlDeleted.emit(); // Emit event when delete request is successful
+      })
+    );
   }
 
   getClicksUpdated(): Observable<void> {

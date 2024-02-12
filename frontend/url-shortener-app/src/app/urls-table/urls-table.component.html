@@ -1,3 +1,7 @@
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+/>
 <div>
   <section class="sm:w-1/2 px-4 mx-auto">
     <div class="flex flex-col mt-6">
@@ -31,6 +35,12 @@
                   >
                     Clicks
                   </th>
+                  <th
+                    scope="col"
+                    class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
+                  >
+                    Delete
+                  </th>
                 </tr>
               </thead>
               <tbody
@@ -56,6 +66,14 @@
                     <h4 class="text-gray-700 dark:text-gray-200">
                       {{ url.clicks }}
                     </h4>
+                  </td>
+                  <td class="px-4 py-4 text-sm whitespace-nowrap">
+                    <span
+                      class="material-symbols-outlined text-red-500 cursor-pointer"
+                      (click)="deleteUrl(url._id)"
+                    >
+                      delete
+                    </span>
                   </td>
                 </tr>
               </tbody>

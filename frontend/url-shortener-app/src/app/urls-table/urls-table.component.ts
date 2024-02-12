@@ -22,6 +22,9 @@ export class UrlsTableComponent implements OnInit {
     this.Http.getClicksUpdated().subscribe(() => {
       this.getAllUrls();
     });
+    this.Http.urlDeleted.subscribe(() => {
+      this.getAllUrls();
+    });
   }
 
   getAllUrls() {
@@ -38,5 +41,18 @@ export class UrlsTableComponent implements OnInit {
 
   onShortUrlClick(): void {
     this.Http.emitClicksUpdated();
+  }
+
+  deleteUrl(id: string) {
+    this.Http.deleteUrl(id).subscribe(
+      () => {
+        console.log('URL deleted successfully');
+        // Optionally, you can perform any additional actions after deletion
+      },
+      (error) => {
+        console.error('Error deleting URL:', error);
+        // Handle error appropriately (e.g., show error message)
+      }
+    );
   }
 }
