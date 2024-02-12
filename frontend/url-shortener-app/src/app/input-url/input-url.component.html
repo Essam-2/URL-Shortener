@@ -1,5 +1,8 @@
 <ng-container *ngIf="success">
-  <app-success-pop></app-success-pop>
+  <app-success-pop [successMessage]="successMessage"></app-success-pop>
+</ng-container>
+<ng-container *ngIf="error">
+  <app-error-pop [errorMessage]="errorMessage"></app-error-pop>
 </ng-container>
 
 <div class="flex items-center justify-center">
