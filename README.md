@@ -2,7 +2,7 @@
 
 ## Overview
 
-URL Shortener is a web application designed to shorten long URLs into more manageable and shareable links. It is built using MongoDB, ExpressJS, and Angular as part of a practice exercise to enhance skills in these technologies.
+URL Shortener is a web application designed to shorten long URLs into more manageable and shareable links. It is built using MongoDB, ExpressJS, and Angular as part of a practice exercise to enhance skills in these technologies. The styling is done using Tailwind CSS.
 
 ## Features
 
@@ -59,5 +59,5 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Acknowledgements
 
-- Thank you to the creators of MongoDB, ExpressJS, and Angular for providing powerful tools and frameworks.
+- Thank you to the creators of MongoDB, ExpressJS, Angular, and Tailwind CSS for providing powerful tools and frameworks.
 - Special thanks to the open-source community for valuable resources and contributions.
