@@ -7,7 +7,6 @@ import { Observable, Subject, tap } from 'rxjs';
 })
 export class HttpService {
   private apiUrl = 'http://localhost:5000';
-  private clicksUpdated = new Subject<void>();
 
   constructor(private http: HttpClient) {}
 
@@ -32,13 +31,5 @@ export class HttpService {
         this.urlDeleted.emit(); // Emit event when delete request is successful
       })
     );
-  }
-
-  getClicksUpdated(): Observable<void> {
-    return this.clicksUpdated.asObservable();
-  }
-
-  emitClicksUpdated(): void {
-    this.clicksUpdated.next();
   }
 }
