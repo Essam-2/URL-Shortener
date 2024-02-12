@@ -1,5 +1,5 @@
 import { NgIf } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-success-pop',
@@ -8,4 +8,6 @@ import { Component } from '@angular/core';
   templateUrl: './success-pop.component.html',
   styleUrl: './success-pop.component.css',
 })
-export class SuccessPopComponent {}
+export class SuccessPopComponent {
+  @Input() successMessage: string = '';
+}
