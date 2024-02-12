@@ -19,9 +19,6 @@ export class UrlsTableComponent implements OnInit {
     this.Http.urlAdded.subscribe(() => {
       this.getAllUrls();
     });
-    this.Http.getClicksUpdated().subscribe(() => {
-      this.getAllUrls();
-    });
     this.Http.urlDeleted.subscribe(() => {
       this.getAllUrls();
     });
@@ -40,7 +37,7 @@ export class UrlsTableComponent implements OnInit {
   }
 
   onShortUrlClick(): void {
-    this.Http.emitClicksUpdated();
+    this.getAllUrls();
   }
 
   deleteUrl(id: string) {
