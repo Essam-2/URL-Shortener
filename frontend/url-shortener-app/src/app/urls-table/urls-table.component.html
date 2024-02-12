@@ -2,6 +2,12 @@
   rel="stylesheet"
   href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
 />
+<ng-container *ngIf="success">
+  <app-success-pop [successMessage]="successMessage"></app-success-pop>
+</ng-container>
+<ng-container *ngIf="error">
+  <app-error-pop [errorMessage]="errorMessage"></app-error-pop>
+</ng-container>
 <div>
   <section class="sm:w-1/2 px-4 mx-auto">
     <div class="flex flex-col mt-6">
